@@ -4,12 +4,14 @@
     <button @click="trans">传递数据</button>
     {{fathervalue}}
     <!-- {{newfathervalue}} -->
+    <button @click="home">回到首页</button>
     
   </div>
 </template>
 
 <script>
 import { defineComponent,  ref ,onMounted} from 'vue'
+import { useRouter } from "vue-router";
 
 export default defineComponent({
   name:"newChild",
@@ -22,7 +24,26 @@ export default defineComponent({
   },
   emits:["send"],
   setup(props, ctx) {
+
+      let router = useRouter();
+
+      let home = () => {
+          router.push({
+              name:"Home",
+              query:{ 
+                num: num.value,
+                obj:JSON.stringify(obj.value),
+
+              
+              }
+          })
+      }
     
+    let num = ref(500);
+    let obj = ref({
+      "student": "John",
+      "age": 24,
+    })
     //let newfathervalue = props.fathervalue;
    // 一直提示错误，不知道为什么
 
@@ -40,6 +61,9 @@ export default defineComponent({
     return {
       childvalue,
       trans,
+      home,
+      num,
+      obj
      // newfathervalue
       
     }
