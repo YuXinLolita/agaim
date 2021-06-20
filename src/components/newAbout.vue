@@ -23,7 +23,7 @@ export default defineComponent({
   emits:["send"],
   setup(props, ctx) {
     
-    let newfathervalue = props.fathervalue;
+    //let newfathervalue = props.fathervalue;
    // 一直提示错误，不知道为什么
 
     let childvalue = ref("我是子组件的数据！");
@@ -31,16 +31,16 @@ export default defineComponent({
     //   ctx.emit("send",childvalue.value);
     // }
     let trans = () => {
-        ctx.emit("send",childvalue);
+        ctx.emit("send",childvalue.value);
     }
     onMounted(() => {
-      ctx.emit("send",childvalue);
+      ctx.emit("send",childvalue.value);
     })
     console.log(props.fathervalue);
     return {
       childvalue,
       trans,
-      newfathervalue
+     // newfathervalue
       
     }
   },
