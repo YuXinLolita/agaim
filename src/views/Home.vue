@@ -1,42 +1,28 @@
 <template>
-  <div>
-    <!-- <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/> -->
-    <newAbout :fathervalue="fathervalue" @send="send"></newAbout>
-    我是子组件数据：{{newdata}}
+  <div> 
+    <button @click="start">开始任务</button>
   </div>
 </template>
 
 <script>
-import { defineComponent, ref } from 'vue';
-import newAbout from "@/components/newAbout.vue";
-// import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
+import { defineComponent } from 'vue'
+import { useRouter } from "vue-router";
 
 export default defineComponent({
-  name: 'newMain',
-  components: {
-    // HelloWorld,
-    newAbout
-  },
+  
   setup() {
-    let fathervalue = ref("我是父组件数据！");
-    let newdata = ref("");
+        let router = useRouter();
 
-    // let send = (val) => {
-    //     newdata.value = val;  
-    // }
+        let start = () => {
+          router.push({
+            path : "/main"
+          })
+        }
 
-    // let add = () => {
-    //   newdata.value = val;
-    // }
-    let send = (val) => {
-      newdata.value = val;
-    }
-    return {
-      fathervalue,
-      newdata,
-      send
-      
-    }
-  }
-});
+          return {
+            start
+          }
+        
+  },
+})
 </script>
