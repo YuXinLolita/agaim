@@ -19,6 +19,14 @@ export default createStore({
   mutations: {
     add (state, payload) {
       state.list.push(payload);
+    },
+    
+    clear (state,payload) {
+      state.list=(payload);
+    },
+
+    del (state, payload) {
+      state.list.splice (payload,1);
     }
   },
   actions: {
