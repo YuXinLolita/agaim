@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { defineComponent , ref, computed, onMounted} from 'vue'
+import { defineComponent , ref, computed } from 'vue'
 import { useStore } from "vuex";
 import Halloworld from "../components/Halloworld.vue";
 import newAbout from "../components/newAbout.vue";
@@ -72,11 +72,20 @@ export default defineComponent({
         // // 
         
         let newdata = ref("");
+        //过滤未完成
+        // let clear = (val) => {
+        //     store.commit("clear",val);
+        // }
+        //清除已完成
         let clear = (val) => {
-            store.commit("clear",val);
+        store.commit("clear",val);
         }
-            let del = (val) => {
-            store.commit("del",val);
+        
+        
+        let del = (item,index) => {
+            console.log(item);
+            console.log(index);
+            // store.commit("del",index);
         }
 
         return {

@@ -1,9 +1,10 @@
 <template>
     <div>
-        <div v-for="(item,index) in list" :key="index">
-            <input type="checkbox" v-model="item.complete">
-            {{item.title}}
-            <button @click="del(item,index)">删除</button>
+        <div v-for="(item3,index5) in list" :key="index5">
+            <input type="checkbox" v-model="item3.complete">
+            {{item3.title}}
+            <button @click="del(item3,index5)">删除</button>
+            
             
             
         </div>
@@ -25,8 +26,9 @@ export default defineComponent({
     emits:["del"],
     setup(props,ctx) {
         
-        let del = (item,index) => {
-            ctx.emit("del",index)
+        let del = (item3,index5) => {
+            
+            ctx.emit("del",item3,index5)
         }
         
 

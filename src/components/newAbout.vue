@@ -2,7 +2,7 @@
     <div>
         <div v-if="list.length >0">
             已完成{{complete}},总共{{list.length}}
-            <button v-if="complete > 0" @click="clear">清除已完成</button>
+            <button v-if="complete > 0" @click="clear(item,index)">清除已完成</button>
         </div>
         <div v-else>
             暂无任务
@@ -36,13 +36,21 @@ export default defineComponent({
         //     (item) => {return item.complete === false});
         //     ctx.emit("clear",arr);
         // }
+        //这是过滤未完成
+        // let clear = () => {
+        //     let arr = props.list.filter( item => {
+        //         return item.complete === false
+        //     })
+        //     ctx.emit("clear",arr);
+           // console.log("clear");
+        //}
+        //  清除已完成
+
         let clear = () => {
-            let arr = props.list.filter( item => {
+                let arr = props.list.filter( item => {
                 return item.complete === false
             })
-            ctx.emit("clear",arr);
-           // console.log("clear");
-        }
+            ctx.emit("clear",arr)}
         return {
             clear,
             complete

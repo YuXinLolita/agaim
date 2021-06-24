@@ -20,14 +20,17 @@ export default createStore({
     add (state, payload) {
       state.list.push(payload);
     },
-    
+    //过滤未完成
     clear (state,payload) {
       state.list=(payload);
     },
-
-    del (state, payload) {
-      state.list.splice (payload,1);
-    }
+    //过滤已完成失败，目前无法通过此方法删除元素
+      // clear (state,payload) {
+      //   state.list.splice(payload,1);
+      // },
+    // del (state, payload) {
+    //   state.list.splice (payload,1);
+    // }
   },
   actions: {
   },
